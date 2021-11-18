@@ -1,6 +1,6 @@
 <?php
 /*
- * Theme Name: TEMPLATE1
+ * Theme Name: TEMPLATE2
  * Theme URI: http://GOOGLE.COM
  * Author:امین کریمی
  * Author URI: http://GOOGLE.COM
@@ -87,9 +87,8 @@
 </head>
 <body>
 
-<div id="hero">
-    <div id="overlay"></div>
-</div>
+      <div style="margin:right;"><img src="<?= get_template_uri(); ?>images/header.jpg"  style="margin:60px;"></div>
+
 
 
 <div class="content">
@@ -156,6 +155,7 @@
            <div style="color:red;"></div>
 
 <div style="clear:both"></div>
+</div>
 <footer class="footer-distributed">
 
     <div class="footer-left">

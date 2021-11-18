@@ -1,12 +1,4 @@
-<?php
-/*
- * Theme Name: TEMPLATE1
- * Theme URI: http://GOOGLE.COM
- * Author:امین کریمی
- * Author URI: http://GOOGLE.COM
- * Description: این قالب برای سایت http://GOOGLE.COM طراحی شده
-*/
-?>
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -130,14 +122,12 @@
                 ?>
                  <div class="posts">
                     <p style="padding-top:10px;padding-right:20px;padding-bottom:10px;font-family:BYekan;">
-                    <a href="<?= post_url(); ?>"><?= post_title(); ?></a></p>
+                    <a href=<?= post_url(); ?>><?= post_title(); ?></a></p>
                     <div style="width:95%;height:3px;background:#15E31E;margin:auto;"></div>
                     <div style="width:500px;margin:50px auto;"><img src="<?= get_template_uri(); ?>images/aa.jpg" style="width:500px;"></div>
                     <div class="post_text">
                     <?= post_content(); ?>
                 </div>
-
-               <div class="more">توضیحات بیشتر</div>
                <div style="padding-bottom:30px;"></div>
            </div>
            <?php

@@ -2,14 +2,28 @@
 
 class template
 {
+
   private $i=-1;
+  public $url=null;
   public function have_post()
   {
     global $connect;
-    $sql=$connect->prepare('SELECT * FROM post');
-    $sql->execute();
-    $row = $sql->rowCount();
-    return $this->i<--$row;
+    if(empty($this->url))
+    {
+      $sql=$connect->prepare('SELECT * FROM post');
+      $sql->execute();
+      $row = $sql->rowCount();
+      return $this->i<--$row;
+
+    }
+    else
+    {
+      $sql=$connect->prepare('SELECT * FROM post WHERE url=?');
+      $sql->execute(array($this->url));
+      $row = $sql->rowCount();
+      return $this->i<--$row;
+    }
+
 
   }
 
@@ -21,19 +35,51 @@ class template
   public function post_title()
   {
     global $connect;
-    $sql=$connect->prepare('SELECT * FROM post');
-    $sql->execute();
-    $fetch=$sql->fetchAll();
-    return $fetch[$this->i]['title'];
+    if(empty($this->url))
+    {
+      $sql=$connect->prepare('SELECT * FROM post');
+      $sql->execute();
+      $fetch=$sql->fetchAll();
+      return $fetch[$this->i]['title'];
+    }
+    else
+    {
+      $sql=$connect->prepare('SELECT * FROM post WHERE url=?');
+      $sql->execute(array($this->url));
+      $fetch=$sql->fetchAll();
+      return $fetch[$this->i]['title'];
+
+    }
+
   }
 
   public function post_content()
   {
     global $connect;
-    $sql=$connect->prepare('SELECT * FROM post ORDER BY id DESC');
+    if(empty($this->url))
+    {
+      $sql=$connect->prepare('SELECT * FROM post');
+      $sql->execute();
+      $fetch=$sql->fetchAll();
+      return $fetch[$this->i]['content'];
+    }
+    else
+    {
+      $sql=$connect->prepare('SELECT * FROM post WHERE url=?');
+      $sql->execute(array($this->url));
+      $fetch=$sql->fetchAll();
+      return $fetch[$this->i]['content'];
+
+    }
+  }
+
+  public function post_url()
+  {
+    global $connect;
+    $sql=$connect->prepare('SELECT * FROM post');
     $sql->execute();
     $fetch=$sql->fetchAll();
-    return $fetch[$this->i]['content'];
+    return URL.'/'.$fetch[$this->i]['url'];
 
   }
 }
